@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button:hover {
+  background-color: darkred;
+}
+
+button:active {
+  background-color: darkred;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+.btn-busqueda {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.search-input {
+  height: 30px;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+}
+
+.search {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1000px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid red;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 250px;
+  height: 150px;
+}
+
+.card p {
+  text-align: center;
+}
+
+.todo {
+  width: 100px;
+  height: 30px;
+  margin-top: 2rem;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: red;
+}
+
+.hidden {
+  display: none;
+}
