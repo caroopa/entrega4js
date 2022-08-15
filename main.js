@@ -52,9 +52,10 @@ let pizzas = [
 // 👉 Crear una barra de búsqueda (input), la cual tenga la función de mostrarnos sólo las pizzas cuyos
 // nombres coincidan con la búsqueda realizada.
 
-localStorage.setItem("pizzas", JSON.stringify(pizzas));
+localStorage.setItem("pizzas", JSON.stringify(pizzas)); // lo envío al local storage
 
 const container = document.querySelector(".container");
+// al cargar la página, quiero que se renderice el HTML de todas las pizzas
 window.addEventListener("load", () => pintarHTML());
 function pintarHTML() {
   container.innerHTML = pizzas
@@ -77,29 +78,31 @@ const input = document.querySelector(".search-input");
 const todo = document.querySelector(".todo");
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
+  e.preventDefault(); // para que no se recargue
   const pizzaBuscada = input.value.trim();
   if (pizzaBuscada === "") {
+    // valido la búsqueda
     alert("Por favor, ingresa una pizza");
     return;
   } else {
-    pintarHTMLBuscada(pizzaBuscada);
+    pintarHTMLBuscada(pizzaBuscada); // creo otro renderizar HTML para las pizzas buscadas
   }
 });
 
 function pintarHTMLBuscada(pizzaBuscada) {
   let pizzaEncontrada = false;
-  let pizzasParaPintar = [];
+  let pizzasParaPintar = []; // creo un array de pizzas que coincidan la búsqueda
   for (let i in pizzas) {
     if (pizzas[i].nombre.toLowerCase().includes(pizzaBuscada.toLowerCase())) {
-      pizzaEncontrada = true;
-      pizzasParaPintar.push(pizzas[i]);
+      pizzaEncontrada = true; // encontró una pizza
+      pizzasParaPintar.push(pizzas[i]); // lo agrego al array
     }
   }
 
   if (pizzaEncontrada) {
-    todo.classList.remove("hidden");
-    container.innerHTML = "";
+    // si hay pizzas para pintar, hago el siguiente paso
+    todo.classList.remove("hidden"); // muestro el botón para mostrar todas las pizzas
+    container.innerHTML = ""; // vacío el HTML así no me las pinta debajo
     container.innerHTML = pizzasParaPintar
       .map((pizza) => {
         return `
@@ -114,11 +117,12 @@ function pintarHTMLBuscada(pizzaBuscada) {
       })
       .join("");
   } else {
+    // si no hay pizzas para pintar, doy un aviso
     alert("No hay un nombre de pizza que contenga esa palabra.");
   }
 }
 
 todo.addEventListener("click", () => {
-  todo.classList.add("hidden");
-  pintarHTML();
+  todo.classList.add("hidden"); // oculto el botón
+  pintarHTML(); // pinto todas las pizzas
 });
